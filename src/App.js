@@ -6,8 +6,10 @@ export default class App extends Component {
   render(){
     return (
       <div className="container">
-        <h1 className="title">Movie Search</h1>
-        <MovieSearch />
+        <div className="movie-box">
+          <h1 className="title">Movie Search</h1>
+          <MovieSearch />
+        </div>
       </div>
     );
   }

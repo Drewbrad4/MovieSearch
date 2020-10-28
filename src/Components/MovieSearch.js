@@ -6,8 +6,7 @@ export default class SearchMovies extends Component{
         super(props)
         this.state = {
             query: "", 
-            movies: [],
-            placeholder: "i.e. JAWS"
+            movies: [] 
         }
     }
 
@@ -38,19 +37,20 @@ export default class SearchMovies extends Component{
     }
 
     render(){
+        const { query, movies } = this.state
         return (
             <>
                 <form className="form" onSubmit={this.searchLogic}>
                     <label className="label" htmlFor="query">Movie:</label>
                     <input className="input" type="text" name="query"
-                        placeholder={this.state.placeholder}
-                        value={this.state.query}
+                        placeholder="i.e. Jaws"
+                        value={query}
                         onChange={this.setQuery}/>
                     <button className="button" type="submit">Search</button>
                 </form>
                 <div className="card-list">
-                {this.state.movies.filter(movie => movie.poster_path).map(movie => (
-                    <MovieCard movie={movie} />
+                {movies && movies.filter(movie => movie.poster_path).map(movie => (
+                    <MovieCard movie={movie} key={movie.id}/>
                 ))}
                 </div> 
             </>
